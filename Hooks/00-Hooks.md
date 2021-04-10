@@ -49,6 +49,7 @@ componentDidUpdate(prevProps,prevState){
 
 - useEffect는 기본적으로 렌더링되고 난 직후마다 실행
 - 두 번째 파라미터 배열에 무엇을 넣는지에 따라 실행되는 조건이 달라짐
+- 오직 언마운트될 때만 뒷정리 함수를 호출하고 싶다면 함수의 두 번째 파라미터에 비어있는 배열을 넣는다.
 
 ```
  useEffect(() => {
@@ -59,4 +60,18 @@ componentDidUpdate(prevProps,prevState){
       console.log(name);
     };
   },[name]);
+```
+
+## 3. useReducer
+
+- 다양한 상태를 다른 값으로 업데이트해 주고 싶을 때 사용
+
+```
+function reducer(state,action){
+  return {...}; //불변성을 지키면서 업데이트한 새로운 상태를 반환
+}
+{
+  type : 'INCREMENT',
+  // 다른 값들이 필요하다면 추가로 들어감
+}
 ```

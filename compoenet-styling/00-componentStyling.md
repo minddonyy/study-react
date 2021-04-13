@@ -19,3 +19,28 @@
     height : 40vmin;
 }
 ```
+
+## Sass 사용하기
+
+- Synctacically Awesome Style Sheets (문법적으로 매우 멋진 스타일시트)는 CSS 전처리기로 복잡한 작업을 쉽게 할 수 있도록 도와주고, 재활용성을 높여 주고 코드의 가독성을 높여준다.
+
+```
+//.sass
+$font-stack : Helvetica, sans-serif
+$primary-color : #333
+
+body
+    font : 100% $font-stack
+    color : $primary-color
+
+//.scss
+$font-stack : Helvetica, sans-serif;
+$primary-color : #333;
+
+body {
+    font : 100% $font-stack;
+    color : $primary-color;
+}
+```
+
+- .sass 화장자는 중괄호와 세미콜론을 사용하지 않는다.

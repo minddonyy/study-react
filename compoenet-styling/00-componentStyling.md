@@ -20,7 +20,7 @@
 }
 ```
 
-## Sass 사용하기
+## 2. Sass 사용하기
 
 - Synctacically Awesome Style Sheets (문법적으로 매우 멋진 스타일시트)는 CSS 전처리기로 복잡한 작업을 쉽게 할 수 있도록 도와주고, 재활용성을 높여 주고 코드의 가독성을 높여준다.
 
@@ -44,3 +44,74 @@ body {
 ```
 
 - .sass 확장자는 중괄호와 세미콜론을 사용하지 않는다.
+
+## 3. CSS Module
+
+- `[파일 이름]_[클래스 이름]_[해시값]` 형태로 자동으로 만들어서 컴포넌트 스타일 클래스 이름이 중첩되는 현상을 방지해 주는 기술
+
+### 3.1 classnames
+
+- CSS 클래스를 조건부로 설정할 때 매우 유용한 라이브러리
+
+```
+yarn add classnames
+```
+
+`classnames 간략 사용법`
+
+```
+import classNames from 'classnames';
+
+classNames('one','two'); // = 'one two'
+classNames('one', {two : true}) // = 'one two'
+classNames('one', {two : false}); // = 'one'
+classNaems('one',['two','three']); // = 'one two three'
+
+const myClass = 'hello';
+classNames('one',myClass,{myCondition : true}); // = 'one hello myCondition'
+```
+
+## 4. styled-components
+
+- 자바 스크립트 안에 스타일을 선언하는 방식 (CSS-in-JS)
+
+```
+yarn add styled-components
+```
+
+`StyledComponent.js`, `App.js`
+
+### 4.1 Tagged 템플릿 리터럴
+
+- 스타일을 작성할 때 `을 사용하여 만든 문자열에 스타일 정보를 넣어 사용한 문법을 Tagged 템플릿 리터럴이라고 부른다.
+- 템플릿 사이사이에 들어가는 자바스크립트 객체나 함수의 원본 값을 그대로 추출 가능
+- 컴포넌트의 props를 스타일 쪽에서 쉽게 조회할 수 있도록 한다.
+
+```
+`hello ${{foo:'bar'}} ${()='world'}!`
+// 결과 : "hello [object Object] () => 'world'!"
+```
+
+### 4.2 스타일링된 엘리먼트 만들기
+
+- 컴포넌트 파일의 상단에서 styled를 불러오고, styled.태그명을 사용
+
+```
+import styled from 'styled-components';
+
+const MyComponent = styled.div`
+    font-size : 2rem;
+`;
+```
+
+```
+//태그의 타입을 styled 함수의 인자로 전달
+const MyInput = styld('input')`
+    background : gray;
+`
+// 아예 컴포넌트 형식의 값을 넣어 줌
+const StyledLink = styled(Link)`
+    color : blue;
+`
+
+```

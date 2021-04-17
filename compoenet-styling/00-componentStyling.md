@@ -113,5 +113,15 @@ const MyInput = styld('input')`
 const StyledLink = styled(Link)`
     color : blue;
 `
+```
 
+### 4.3 스타일에서 Props 조회하기
+`StyledComponents.js` - Box 컴포넌트
+```
+const Box = styled.div`
+  /* props로 넣어준 값을 직접 전달해 줄 수 있습니다. */
+  background: ${(props) => props.color || "blue"};
+  padding: 1rem;
+  display: flex;
+`;
 ```
